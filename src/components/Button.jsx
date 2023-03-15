@@ -1,5 +1,3 @@
-import React from "react";
-
 const Button = ({
   children,
   className,
@@ -20,7 +18,7 @@ const Button = ({
           "bg-indigo-100 text-orange-800"
         } `}
         onClick={onClick}
-        disabled={isDisabled && children === "." ? true : false}
+        disabled={isDisabled && children === "."}
       >
         {children}
       </button>

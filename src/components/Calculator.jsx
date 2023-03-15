@@ -12,6 +12,22 @@ const Calculator = () => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [prevNumb, setPrevNumb] = useState("");
 
+  const calculate = (symbol, firstNumber, secondNumber) => {
+    switch (symbol) {
+      case "/":
+        return firstNumber / secondNumber;
+      case "*":
+        return firstNumber * secondNumber;
+      case "-":
+        return firstNumber - secondNumber;
+      case "+":
+        return firstNumber + secondNumber;
+
+      default:
+        break;
+    }
+  };
+
   const specialOp = (operator) => {
     switch (operator) {
       case "AC":
@@ -68,9 +84,9 @@ const Calculator = () => {
     setCount((prev) => prev + 1);
     if (count === 0) {
       setPrevOp(currentOperator);
-      setAnswer(eval(`(${secondNumber} ${currentOperator} ${currentNumber})`));
+      setAnswer(calculate(currentOperator, secondNumber, currentNumber));
     } else {
-      setAnswer(eval(`(${answer} ${prevOp} ${prevNumb})`));
+      setAnswer(calculate(prevOp, answer, prevNumb));
     }
   };
   const getNumber = (number) => {
@@ -118,7 +134,7 @@ const Calculator = () => {
                 return (
                   <Button
                     children={el}
-                    large={el === "0" ? true : false}
+                    large={el === "0"}
                     onClick={() => getNumber(el)}
                     key={index}
                     className="border-gray-500"
