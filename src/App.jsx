@@ -1,15 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import "./App.css";
+import Calculator from "./components/Calculator";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <div className="App">
-      <h1 className='text-red-500'>Hello world</h1>
+    <div className="flex justify-center items-center h-screen bg-gradient-to-r from-[#bdc3c7] to-[#2c3e50]">
+      <Calculator />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
